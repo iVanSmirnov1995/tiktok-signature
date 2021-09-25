@@ -57,3 +57,5 @@ CMD [ "pm2-runtime", "listen.js" ]
 
 RUN  npm i playwright-chromium
 RUN  node browser.js "https://m.tiktok.com/api/post/item_list/?aid=1988&count=30&secUid=MS4wLjABAAAAOUoQXeHglWcq4ca3MwlckxqAe-RIKQ1zlH9NkQkbLAT_h1_6SDc4zyPdAcVdTWZF&cursor=0"
+
+RUN npm start
