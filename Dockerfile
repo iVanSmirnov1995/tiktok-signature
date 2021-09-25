@@ -10,43 +10,17 @@ RUN apt-get update && apt-get install -y curl && \
     npm install -g pm2
 
 
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update -qq && apt-get install -y yarn
+RUN yarn install
 
-# 2. Install WebKit dependencies
-RUN apt-get install -y libwoff1 \
-    libopus0 \
-    libwebp6 \
-    libwebpdemux2 \
-    libenchant1c2a \
-    libgudev-1.0-0 \
-    libsecret-1-0 \
-    libhyphen0 \
-    libgdk-pixbuf2.0-0 \
-    libegl1 \
-    libnotify4 \
-    libxslt1.1 \
-    libevent-2.1-6 \
-    libgles2 \
-    libgl1 \
-    libvpx5 \
-    libgstreamer1.0-0 \
-    libgstreamer-gl1.0-0 \
-    libgstreamer-plugins-base1.0-0 \
-    libgstreamer-plugins-bad1.0-0 \
-    libharfbuzz-icu0 \
-    libopenjp2-7
 
-# 3. Install Chromium dependencies
+RUN PLAYWRIGHT_BROWSERS_PATH=/usr/lib/playwright yarn add playwright-chromium@1.11.1
 
-RUN apt-get install -y libnss3 \
-    libxss1 \
-    libasound2
+RUN PLAYWRIGHT_BROWSERS_PATH=/usr/lib/playwright yarn add playwright-webkit@1.11.1
 
-# 4. Install Firefox dependencies
-
-RUN apt-get install -y libdbus-glib-1-2 \
-    libxt6
-    
-RUN PLAYWRIGHT_BROWSERS_PATH=0 npm i playwright-chromium
+RUN PLAYWRIGHT_BROWSERS_PATH=/usr/lib/playwright yarn add playwright-firefox@1.11.1
 
 # 5. Copying required files
 
