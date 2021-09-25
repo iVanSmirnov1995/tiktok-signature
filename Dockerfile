@@ -37,10 +37,6 @@ RUN apt-get install -y libwoff1 \
 
 # 3. Install Chromium dependencies
 
-RUN curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
-RUN rm google-chrome-stable_current_amd64.deb 
-
 RUN apt-get install -y libnss3 \
     libxss1 \
     libasound2
@@ -49,6 +45,8 @@ RUN apt-get install -y libnss3 \
 
 RUN apt-get install -y libdbus-glib-1-2 \
     libxt6
+    
+RUN npm i playwright-chromium
 
 # 5. Copying required files
 
