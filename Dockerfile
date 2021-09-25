@@ -45,9 +45,6 @@ RUN apt-get install -y libnss3 \
 
 RUN apt-get install -y libdbus-glib-1-2 \
     libxt6
-    
-RUN npm i playwright-chromium
-RUN npm i tiktok-signature
 
 # 5. Copying required files
 
