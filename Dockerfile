@@ -8,8 +8,6 @@ RUN apt-get update && apt-get install -y curl && \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g pm2
-    npm i tiktok-signature
-    npm i playwright-chromium
 
 
 
@@ -47,6 +45,9 @@ RUN apt-get install -y libnss3 \
 
 RUN apt-get install -y libdbus-glib-1-2 \
     libxt6
+    
+ RUN npm i tiktok-signature
+ RUN npm i playwright-chromium
 
 # 5. Copying required files
 
